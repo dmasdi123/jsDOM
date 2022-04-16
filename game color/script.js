@@ -47,3 +47,16 @@ sBiru.addEventListener('input', function() {
 });
 
 
+document.body.addEventListener('mousemove', function(e) {
+    // //posisi mouse
+    // console.log(e.clientX);
+    // //ukuran browser
+    // console.log(window.innerWidth);
+    const xPos = Math.round((e.clientX / window.innerWidth) * 255 );
+
+    const yPos = Math.round((e.clientY / window.innerHeight) * 255 );
+
+    document.body.style.backgroundColor = 'rgb('+ xPos +','+ yPos +', 100)'
+
+});
+
