@@ -53,18 +53,39 @@ function getHasil(komp, player) {
 //     info.innerHTML = hasil;
 // });
 
-const pilihan = document.querySelectorAll('li img');
+function putar() {
+    const imgKomputer = document.querySelector('.img-komputer');
+    const gambar = ['gajah', 'semut', 'orang'];
+    let i = 0;
+    const waktuMulai = new Date().getTime();
+    setInterval(function() {
+        if (new Date().getTime() - waktuMulai > 1000) {
+            clearInterval;
+            return;
+        }
+        imgKomputer.setAttribute('src', 'img/' + gambar[i++] + '.png');
+        if (i == gambar.length) {
+            i = 0;
+        }
+    }, 100);
+}
 
+const pilihan = document.querySelectorAll('li img');
 pilihan.forEach(function (i) {
     i.addEventListener('click', function() {
     const pilihanKomputer = getPilihanKomputer();
     const pilihanPlayer = i.className;
     const hasil = getHasil(pilihanKomputer, pilihanPlayer);
 
-    const imgKomputer = document.querySelector('.img-komputer');
-    imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
+    putar();
 
-    const info = document.querySelector('.info');
-    info.innerHTML = hasil;
+    setTimeout(function() {
+        const imgKomputer = document.querySelector('.img-komputer');
+        imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
+    
+        const info = document.querySelector('.info');
+        info.innerHTML = hasil;
+        }, 1000);
     });
 });
+
