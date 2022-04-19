@@ -78,7 +78,7 @@ pilihan.forEach(function (i) {
     const hasil = getHasil(pilihanKomputer, pilihanPlayer);
 
     putar();
-
+    
     setTimeout(function() {
         const imgKomputer = document.querySelector('.img-komputer');
         imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
